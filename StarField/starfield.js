@@ -3,9 +3,11 @@ function Star (){
   this.y = Math.random() * height * 2 - height;
   this.z = Math.random() * width;
   this.pz = this.z;
+  this.speed;
 
   this.update = function (speed){
     this.z-=speed
+    this.speed=speed;
     if(this.z < 1){
       this.x = Math.random() * width * 2 - width;
       this.y = Math.random() * height * 2 - height;
@@ -25,6 +27,7 @@ function Star (){
 
     let px = width * this.x / this.pz;
     let py = height * this.y / this.pz;
+    this.pz = Math.min(this.z * speed,this.pz);
 
     stroke(255);
     line(px,py,sx,sy);
